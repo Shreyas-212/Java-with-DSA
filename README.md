@@ -4,14 +4,14 @@ This repository contains my Java-based solutions and notes as I learn **Data Str
 
 What's Inside:
 
-- ✅ Core DSA Topics 
+- ✅ **Core DSA Topics**  
   Arrays, Strings, Linked Lists, Stacks, Queues, Trees, Graphs, Hashing, Heaps, Tries, and more.
 
-- 🧠 Algorithms
+- 🧠 **Algorithms**  
   Sorting, Searching, Recursion, Backtracking, Sliding Window, Two Pointers, Dynamic Programming, Greedy, etc.
 
-- 📂 Topic-Wise Folders
+- 📂 **Topic-Wise Folders**  
   Each folder contains multiple problems with Java solutions and explanations.
 
-- 💬 Clean & Readable Code  
+- 💬 **Clean & Readable Code**  
   All code is beginner-friendly, modular, and includes comments to explain the logic.
