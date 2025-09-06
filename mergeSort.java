@@ -43,7 +43,7 @@ public class mergeSort {
     }
     public static void main(String[] args) {
         int arr[] = {6, 3, 9, 5, 2, 8};
-        margeSort(arr, 0, arr.length-1);
+        mergeSort(arr, 0, arr.length-1);
         printArr(arr);
     }
 }
