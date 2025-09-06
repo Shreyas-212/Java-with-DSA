@@ -5,13 +5,13 @@ public class mergeSort {
         }
         System.out.println();
     }
-    public static void margeSort(int arr[], int si, int ei) {
+    public static void mergeSort(int arr[], int si, int ei) {
         if(si >= ei) {
             return;
         }
         int mid = si + (ei - si)/2;
-        margeSort(arr, si, mid);
-        margeSort(arr, mid+1, ei);
+        mergeSort(arr, si, mid);
+        mergeSort(arr, mid+1, ei);
         merge(arr, si, mid, ei);
     }
     public static void merge(int arr[], int si, int mid, int ei) {
