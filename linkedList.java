@@ -11,9 +11,11 @@ public class linkedList {
 
     public static Node head;
     public static Node tail;
+    public static int size;
 
     public void addFirst(int data) {
         Node newNode = new Node(data);
+        size++;
         if(head == null) {
             head = tail = newNode;
             return;
@@ -24,6 +26,7 @@ public class linkedList {
     }
     public void addLast(int data) {
         Node newNode = new Node(data);
+        size++;
         if(head == null) {
             head = tail = newNode;
         }
@@ -48,6 +51,7 @@ public class linkedList {
             return;
         }
         Node newNode = new Node(data);
+        size++;
         Node temp = head;
         int i = 0;
 
@@ -59,15 +63,101 @@ public class linkedList {
         newNode.next = temp.next;
         temp.next = newNode;
     }
+
+    public int removeFirst() {
+        if(size == 0) {
+            System.out.println("LinkedList is empty");
+            return Integer.MIN_VALUE;
+        } else if(size == 1 ) {
+            int val = head.data;
+            head = tail = null;
+            size = 0; 
+            return val;
+        }
+        head = head.next;
+        int val = head.data;
+        size--;
+        return val;
+    }
+
+    public int removeLast() {
+        if(size == 0) {
+            System.out.println("LinkedList is empty");
+            return Integer.MIN_VALUE;
+        } else if (size == 1) {
+            int val = head.data;
+            head = tail = null;
+            size = 0;
+            return val;
+        }
+
+        Node prev = head;
+        for(int i=0; i<size-2; i++) {
+            prev = prev.next;
+        }
+
+        int val = prev.next.data;
+        prev.next = null;
+        tail = prev;
+        size--;
+        return val;
+    }
+
+    public int iterativeSearch(int key) {
+        Node temp = head;
+        int i=0;
+
+        while(temp != null) {
+            if (temp.data == key) {
+                return i;
+            }
+            temp =  temp.next;
+            i++;
+        }
+
+        return -1;
+    }
+
+    public int helper(Node head, int key) {
+        if(head == null) {
+            return -1;
+        }
+        if(head.data == key) {
+            return 0;
+        }
+        int idx = helper(head.next, key);
+        if(idx == -1) {
+            return -1;
+        }
+
+        return idx+1;
+    }
+    public int recursiveSearch(int key) {
+        return helper(head, key);
+    }
     public static void main(String[] args) {
         linkedList ll = new linkedList();
         ll.addFirst(2);
         ll.addFirst(1);
-        ll.addLast(3);
         ll.addLast(4);
+        ll.addLast(5);
         ll.print();
-        ll.add(2, 9);
+        ll.add(2, 3);
         ll.print();
+        // System.out.println(size);
+
+        // ll.removeFirst();
+        // ll.print();
+
+        // ll.removeLast();
+        // ll.print();
+        // System.out.println(size);
+        // System.out.println(ll.iterativeSearch(4));
+        // System.out.println(ll.iterativeSearch(10));
+
+        System.out.println(ll.iterativeSearch(4));
+        System.out.println(ll.iterativeSearch(10));
+
     }
 }
  
