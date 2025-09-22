@@ -149,15 +149,79 @@ public class linkedList {
         }
         head = prev;
     }
+
+    public void deleteNthFromEnd(int n) {
+        int sz = 0;
+        Node temp = head;
+        while (temp!=null) {
+            temp = temp.next;
+            sz++;
+        }
+
+        if(n == sz) {
+            head = head.next;
+            return;
+        }
+
+        int i = 1;
+        int iToFind = sz - n;
+        Node prev = head;
+        while (i < iToFind) {
+            prev = prev.next;
+            i++;
+        }
+
+        prev.next = prev.next.next;
+        return;
+    }
+    public Node findMiddle(Node head) {
+        Node slow = head;
+        Node fast = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+    }
+    public boolean checkPalindrome() {
+        if(head == null || head.next == null) {
+            return true;
+        }
+        Node midNode = findMiddle(head);
+
+        Node prev = null;
+        Node curr = midNode;
+        Node next;
+
+        while (curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+
+        Node right = prev;
+        Node left = head;
+
+        while (right != null) {
+            if(left.data != right.data) {
+                return false;
+            } 
+            left = left.next;
+            right = right.next;
+        }
+        return true;
+    }
     public static void main(String[] args) {
         linkedList ll = new linkedList();
-        ll.addFirst(2);
-        ll.addFirst(1);
-        ll.addLast(4);
-        ll.addLast(5);
-        ll.print();
-        ll.add(2, 3);
-        ll.print();
+        // ll.addFirst(2);
+        // ll.addFirst(1);
+        // ll.addLast(4);
+        // ll.addLast(5);
+        // ll.print();
+        // ll.add(2, 3);
+        // ll.print();
         // System.out.println(size);
 
         // ll.removeFirst();
@@ -171,9 +235,19 @@ public class linkedList {
 
         // System.out.println(ll.iterativeSearch(4));
         // System.out.println(ll.iterativeSearch(10));
-        ll.reverse();
+        // ll.reverse();
+        // ll.print();
+
+        // ll.deleteNthFromEnd(3);
+        // ll.print();
+
+        ll.addLast(1);
+        ll.addLast(2);
+        ll.addLast(2);
+        ll.addLast(1);
         ll.print();
 
+        System.out.println(ll.checkPalindrome());
     }
 }
  
