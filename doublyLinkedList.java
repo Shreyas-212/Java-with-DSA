@@ -85,18 +85,40 @@ public class doublyLinkedList {
         return val;
     }
 
+    public void reverse() {
+        Node curr = head;
+        Node prev = null;
+        Node next;
+
+        while (curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        head = prev;
+    }
+
     public static void main(String[] args) {
         doublyLinkedList dll = new doublyLinkedList();
-        dll.addFirst(3);
-        dll.addFirst(2);
-        dll.addFirst(1);
-        dll.addLast(4);
-        dll.print();
-        System.out.println(dll.size);
+        // dll.addFirst(3);
+        // dll.addFirst(2);
+        // dll.addFirst(1);
+        // dll.addLast(4);
+        // dll.print();
+        // System.out.println(dll.size);
 
-        dll.removeFirst();
-        dll.removeLast();
+        // dll.removeFirst();
+        // dll.removeLast();
+        // dll.print();
+        // System.out.println(dll.size);
+
+        dll.addLast(1);
+        dll.addLast(2);
+        dll.addLast(3);
+
         dll.print();
-        System.out.println(dll.size);
+        dll.reverse();
+        dll.print();
     }
 }
