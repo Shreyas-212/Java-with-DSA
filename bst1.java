@@ -118,8 +118,22 @@ public class bst1 {
         }
         System.out.println("Null");
     }
+
+    public static boolean isValidBST(Node root, Node min, Node max) {
+        if(root == null) {
+            return true;
+        }
+
+        if(min != null && root.data <= min.data) {
+            return false;
+        } else if(max != null && root.data >= max.data) {
+            return false;
+        }
+        return isValidBST(root.left, min, root) && isValidBST(root.right, root, max);
+
+    }
     public static void main(String[] args) {
-        int values[] = {5, 1, 3, 4, 2, 7};
+        int values[] = {8, 5, 3, 6, 10, 11, 14};
         Node root = null;
 
         for(int i=0; i<values.length; i++) {
@@ -144,5 +158,7 @@ public class bst1 {
         printInRange(root, 5, 8);
         System.out.println( );
         printRootToLeaf(root, new ArrayList<>());
+
+        System.out.println(isValidBST(root, null, null));
     }
 }
