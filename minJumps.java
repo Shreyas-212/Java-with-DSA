@@ -7,7 +7,7 @@ public class minJumps {
         int dp[] = new int[n];
         Arrays.fill(dp, -1);
 
-        dp[n - 1] = 0; // last index needs 0 jumps
+        dp[n - 1] = 0;
 
         for (int i = n - 2; i >= 0; i--) {
             int steps = nums[i];
